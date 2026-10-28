@@ -26,14 +26,24 @@
         com você.
       </p>
 
-      <!-- PRAZO -->
+      <!-- PRAZO DINÂMICO -->
       <div class="rsvp__deadline">
 
         <span class="rsvp__deadline-label">
           Confirmações e alterações até
         </span>
 
-        <strong>12 de novembro de 2028</strong>
+        @if (dataLimiteRsvp) {
+
+          <strong>
+            {{ dataLimiteRsvp.slice(8, 10) }}/{{ dataLimiteRsvp.slice(5, 7) }}/{{ dataLimiteRsvp.slice(0, 4) }}
+          </strong>
+
+        } @else {
+
+          <strong>Prazo não informado</strong>
+
+        }
 
       </div>
 
@@ -52,7 +62,14 @@
 
         <h3>Olá, {{ nomeConvidado }}!</h3>
 
-        @if (statusConvite === 'CONFIRMADO') {
+        @if (prazoRsvpEncerrado) {
+
+          <p>
+            O prazo para confirmação de presença e alterações
+            foi encerrado. Você ainda pode consultar seu convite.
+          </p>
+
+        } @else if (statusConvite === 'CONFIRMADO') {
 
           <p>
             Sua presença já está confirmada!
@@ -102,11 +119,12 @@
         <div class="rsvp__acompanhantes-header">
 
           <span class="rsvp__acompanhantes-title">
-            Adicione seus acompanhantes
+            Seus acompanhantes
           </span>
 
           <!-- BOTÃO ADICIONAR -->
           @if (
+            !prazoRsvpEncerrado &&
             limiteAcompanhantes > 0 &&
             acompanhantes.length < limiteAcompanhantes
           ) {
@@ -154,41 +172,47 @@
                   [id]="'acompanhante-' + i"
                   [name]="'acompanhante-' + i"
                   [(ngModel)]="acompanhantes[i]"
+                  [disabled]="prazoRsvpEncerrado"
+                  maxlength="150"
                   placeholder="Nome completo do acompanhante"
                 />
 
                 <!-- BOTÃO REMOVER -->
-                <button
-                  type="button"
-                  class="rsvp__remove-icon"
-                  (click)="removerAcompanhante(i)"
-                  [attr.aria-label]="'Remover acompanhante ' + (i + 1)"
-                  title="Remover acompanhante"
-                >
+                @if (!prazoRsvpEncerrado) {
 
-                  <!-- ÍCONE LIXEIRA -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
+                  <button
+                    type="button"
+                    class="rsvp__remove-icon"
+                    (click)="removerAcompanhante(i)"
+                    [attr.aria-label]="'Remover acompanhante ' + (i + 1)"
+                    title="Remover acompanhante"
                   >
 
-                    <path d="M3 6h18" />
-                    <path d="M8 6V4h8v2" />
-                    <path d="M19 6l-1 14H6L5 6" />
-                    <path d="M10 10v7" />
-                    <path d="M14 10v7" />
+                    <!-- ÍCONE LIXEIRA -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
 
-                  </svg>
+                      <path d="M3 6h18" />
+                      <path d="M8 6V4h8v2" />
+                      <path d="M19 6l-1 14H6L5 6" />
+                      <path d="M10 10v7" />
+                      <path d="M14 10v7" />
 
-                </button>
+                    </svg>
+
+                  </button>
+
+                }
 
               </div>
 
@@ -203,6 +227,7 @@
              ================================================= -->
 
         @if (
+          !prazoRsvpEncerrado &&
           limiteAcompanhantes > 0 &&
           acompanhantes.length >= limiteAcompanhantes
         ) {
@@ -220,13 +245,15 @@
            CONFIRMAÇÃO DE PRESENÇA
            ===================================================== -->
 
-      @if (statusConvite === 'PENDENTE') {
+      @if (
+        !prazoRsvpEncerrado &&
+        (statusConvite === 'PENDENTE' || statusConvite === 'RECUSADO')
+      ) {
 
         <button
           type="button"
           class="rsvp__button rsvp__button--confirm"
-          disabled
-          title="Confirmação disponível após integração"
+          (click)="confirmarPresenca()"
         >
 
           Confirmar presença
@@ -241,24 +268,34 @@
 
       @if (statusConvite === 'CONFIRMADO') {
 
-        <!-- BOTÃO SALVAR ALTERAÇÕES -->
-        <button
-          type="button"
-          class="rsvp__button rsvp__button--confirm"
-          disabled
-          title="Salvamento disponível após integração"
-        >
+        @if (!prazoRsvpEncerrado) {
 
-          Salvar alterações
+          <!-- BOTÃO SALVAR ALTERAÇÕES -->
+          <button
+            type="button"
+            class="rsvp__button rsvp__button--confirm"
+            (click)="confirmarPresenca()"
+          >
 
-        </button>
+            Salvar alterações
 
-        <!-- MENSAGEM ABAIXO DO BOTÃO -->
-        <p class="rsvp__help">
-          Sua presença está confirmada.
-          Você poderá adicionar, remover ou substituir
-          acompanhantes até o prazo estabelecido.
-        </p>
+          </button>
+
+          <!-- MENSAGEM ABAIXO DO BOTÃO -->
+          <p class="rsvp__help">
+            Sua presença está confirmada.
+            Você pode adicionar, remover ou substituir
+            acompanhantes até o prazo estabelecido.
+          </p>
+
+        } @else {
+
+          <p class="rsvp__help">
+            Sua presença está confirmada.
+            O prazo para alterações foi encerrado.
+          </p>
+
+        }
 
       }
 
