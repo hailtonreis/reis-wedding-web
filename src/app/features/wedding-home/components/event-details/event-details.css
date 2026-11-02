@@ -1,0 +1,454 @@
+/* =========================================================
+   O GRANDE DIA / PROGRAMAÇÃO
+   Reis Wedding
+   ========================================================= */
+
+:host {
+  display: block;
+}
+
+.event-details {
+  position: relative;
+  overflow: hidden;
+
+  padding: 8rem 2rem;
+
+  background: var(--color-surface, #fffaf6);
+  color: var(--color-text, #3f3833);
+}
+
+.event-details__container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.event-details__header {
+  max-width: 720px;
+  margin: 0 auto 7rem;
+
+  text-align: center;
+}
+
+.event-details__eyebrow {
+  margin: 0 0 1.25rem;
+
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+
+  color: var(--color-primary, #a67c68);
+}
+
+.event-details__title {
+  margin: 0;
+
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-weight: 400;
+
+  line-height: 1;
+  letter-spacing: -0.04em;
+
+  color: var(--color-text, #3f3833);
+}
+
+.event-details__description {
+  max-width: 520px;
+  margin: 2rem auto 0;
+
+  font-family: var(--font-body, sans-serif);
+  font-size: 1rem;
+
+  line-height: 1.8;
+
+  color: var(--color-text-muted, #766c65);
+}
+
+
+/* =========================================================
+   PROGRAMAÇÃO
+   ========================================================= */
+
+.event-details__grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    1px
+    minmax(0, 1fr);
+
+  gap: clamp(3rem, 6vw, 6rem);
+
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.event {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  gap: 2rem;
+}
+
+.event__number {
+  padding-top: 0.35rem;
+
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 0.8rem;
+
+  letter-spacing: 0.18em;
+
+  color: #b9a99f;
+}
+
+.event__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event__eyebrow {
+  margin: 0 0 0.8rem;
+
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: var(--color-primary, #a67c68);
+}
+
+.event__title {
+  margin: 0 0 2rem;
+
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+
+  color: var(--color-text, #3f3833);
+}
+
+
+/* =========================================================
+   HORÁRIO
+   ========================================================= */
+
+.event__time {
+  display: block;
+
+  margin-bottom: 2rem;
+
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: var(--color-primary, #a67c68);
+}
+
+
+/* =========================================================
+   LOCAL
+   ========================================================= */
+
+.event__location {
+  margin-bottom: 2.25rem;
+}
+
+.event__location strong {
+  display: block;
+
+  margin-bottom: 0.45rem;
+
+  font-family: var(--font-body, sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+
+  color: var(--color-text, #3f3833);
+}
+
+.event__location address {
+  margin: 0;
+
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.9rem;
+  font-style: normal;
+
+  line-height: 1.7;
+
+  color: var(--color-text-muted, #766c65);
+}
+
+
+/* =========================================================
+   LINK / CTA
+   ========================================================= */
+
+.event__link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+
+  padding-bottom: 0.4rem;
+
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: var(--color-primary, #a67c68);
+
+  text-decoration: none;
+}
+
+.event__link::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 1px;
+
+  background: currentColor;
+
+  transform: scaleX(0.35);
+  transform-origin: left;
+
+  transition: transform 0.35s ease;
+}
+
+.event__link:hover::after {
+  transform: scaleX(1);
+}
+
+.event__link span:last-child {
+  transition: transform 0.35s ease;
+}
+
+.event__link:hover span:last-child {
+  transform: translateX(5px);
+}
+
+
+/* =========================================================
+   DIVISOR
+   ========================================================= */
+
+.event-details__divider {
+  width: 1px;
+  min-height: 360px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      #d8c7bc 15%,
+      #d8c7bc 85%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   DRESS CODE
+   ========================================================= */
+
+.dress-code {
+  position: relative;
+
+  max-width: 760px;
+
+  margin: 7rem auto 0;
+  padding: 3.5rem 2rem 0;
+
+  text-align: center;
+
+  border-top: 1px solid #ded1c9;
+}
+
+.dress-code__eyebrow {
+  display: block;
+
+  margin-bottom: 1rem;
+
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+
+  color: var(--color-primary, #a67c68);
+}
+
+.dress-code__title {
+  margin: 0;
+
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  font-style: italic;
+
+  color: var(--color-text, #3f3833);
+}
+
+.dress-code__description {
+  max-width: 390px;
+
+  margin: 1rem auto 0;
+
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.9rem;
+
+  line-height: 1.7;
+
+  color: var(--color-text-muted, #766c65);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .event-details {
+    padding: 6rem 1.5rem;
+  }
+
+  .event-details__header {
+    margin-bottom: 5rem;
+  }
+
+  .event-details__grid {
+    gap: 3rem;
+  }
+
+  .event {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .event__number {
+    padding: 0;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .event-details {
+    padding: 5rem 1.25rem;
+  }
+
+  .event-details__header {
+    margin-bottom: 4rem;
+  }
+
+  .event-details__title {
+    font-size: clamp(2.8rem, 14vw, 4rem);
+  }
+
+  .event-details__description {
+    font-size: 0.95rem;
+  }
+
+
+  /* Eventos passam a ser verticais */
+
+  .event-details__grid {
+    display: block;
+  }
+
+  .event {
+    display: block;
+  }
+
+  .event__number {
+    display: block;
+
+    margin-bottom: 1.25rem;
+  }
+
+  .event__title {
+    margin-bottom: 1.5rem;
+  }
+
+  .event__time {
+    margin-bottom: 1.75rem;
+
+    font-size: clamp(3rem, 15vw, 4rem);
+  }
+
+
+  /* Divisor horizontal no mobile */
+
+  .event-details__divider {
+    width: 100%;
+    min-height: 1px;
+    height: 1px;
+
+    margin: 4rem 0;
+
+    background:
+      linear-gradient(
+        to right,
+        transparent,
+        #d8c7bc 15%,
+        #d8c7bc 85%,
+        transparent
+      );
+  }
+
+
+  /* Dress code */
+
+  .dress-code {
+    margin-top: 5rem;
+    padding: 3rem 0 0;
+  }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .event__link::after,
+  .event__link span:last-child {
+    transition: none;
+  }
+
+  .event__link:hover span:last-child {
+    transform: none;
+  }
+}

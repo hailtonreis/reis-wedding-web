@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "reis-wedding": {
+    "reis-wedding-web": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -19,6 +19,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
               }
             ],
             "styles": [
@@ -43,8 +48,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "12kB",
+                  "maximumError": "16kB"
                 }
               ],
               "outputHashing": "all"
@@ -61,10 +66,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "reis-wedding:build:production"
+              "buildTarget": "reis-wedding-web:build:production"
             },
             "development": {
-              "buildTarget": "reis-wedding:build:development"
+              "buildTarget": "reis-wedding-web:build:development"
             }
           },
           "defaultConfiguration": "development"

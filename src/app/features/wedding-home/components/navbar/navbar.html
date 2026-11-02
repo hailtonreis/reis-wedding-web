@@ -1,0 +1,70 @@
+<header
+  class="navbar"
+  [class.navbar--scrolled]="isScrolled"
+>
+  <div class="navbar__container">
+
+    <!-- Navegação -->
+    <nav
+      class="navbar__nav"
+      [class.navbar__nav--open]="isMenuOpen"
+    >
+
+      <a
+        href="/wedding#inicio"
+        class="navbar__link"
+        (click)="closeMenu()"
+      >
+        Início
+      </a>
+
+      <a
+        href="/wedding#nossa-historia"
+        class="navbar__link"
+        (click)="closeMenu()"
+      >
+        Nossa História
+      </a>
+
+      <a
+        href="/wedding#detalhes"
+        class="navbar__link"
+        (click)="closeMenu()"
+      >
+        Programação
+      </a>
+
+      <a
+        href="/wedding#rsvp"
+        class="navbar__link"
+        (click)="closeMenu()"
+      >
+        Confirmar Presença
+      </a>
+
+      <a
+        href="/wedding#presentes"
+        class="navbar__link"
+        (click)="closeMenu()"
+      >
+        Presentes
+      </a>
+
+    </nav>
+
+    <!-- Botão Hambúrguer Mobile -->
+    <button
+      class="navbar__toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [class.active]="isMenuOpen"
+      aria-label="Alternar menu de navegação"
+      [attr.aria-expanded]="isMenuOpen"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>

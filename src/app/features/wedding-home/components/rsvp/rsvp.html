@@ -1,0 +1,319 @@
+<!-- =========================================================
+     RSVP
+     Reis Wedding
+     ========================================================= -->
+
+<section class="rsvp" aria-labelledby="rsvp-title">
+
+  <div class="rsvp__container">
+
+    <!-- =====================================================
+         INTRODUÇÃO
+         ===================================================== -->
+
+    <div class="rsvp__intro">
+
+      <p class="rsvp__eyebrow">RSVP</p>
+
+      <h2 id="rsvp-title" class="rsvp__title">
+        Confirme sua
+        <span>presença</span>
+      </h2>
+
+      <p class="rsvp__description">
+        Estamos preparando tudo com muito carinho
+        e queremos compartilhar esse momento especial
+        com você.
+      </p>
+
+      <!-- PRAZO DINÂMICO -->
+      <div class="rsvp__deadline">
+
+        <span class="rsvp__deadline-label">
+          Confirmações e alterações até
+        </span>
+
+        @if (dataLimiteRsvp) {
+
+          <strong>
+            {{ dataLimiteRsvp.slice(8, 10) }}/{{ dataLimiteRsvp.slice(5, 7) }}/{{ dataLimiteRsvp.slice(0, 4) }}
+          </strong>
+
+        } @else {
+
+          <strong>Prazo não informado</strong>
+
+        }
+
+      </div>
+
+    </div>
+
+    <!-- =====================================================
+         CARTÃO DO CONVIDADO
+         ===================================================== -->
+
+    <div class="rsvp__form-wrapper">
+
+      <!-- CABEÇALHO -->
+      <div class="rsvp__form-header">
+
+        <span class="rsvp__step">Seu convite</span>
+
+        <h3>Olá, {{ nomeConvidado }}!</h3>
+
+        @if (prazoRsvpEncerrado) {
+
+          <p>
+            O prazo para confirmação de presença e alterações
+            foi encerrado. Você ainda pode consultar seu convite.
+          </p>
+
+        } @else if (statusConvite === 'CONFIRMADO') {
+
+          <p>
+            Sua presença já está confirmada!
+            Você pode gerenciar seus acompanhantes
+            até a data-limite.
+          </p>
+
+        } @else if (statusConvite === 'PENDENTE') {
+
+          <p>
+            Será uma alegria contar com você!
+            Confirme sua presença e, se desejar,
+            informe seus acompanhantes.
+          </p>
+
+        } @else if (statusConvite === 'RECUSADO') {
+
+          <p>
+            Sua presença está registrada como recusada.
+          </p>
+
+        }
+
+      </div>
+
+      <!-- =====================================================
+           ACOMPANHANTES
+           ===================================================== -->
+
+      <div class="rsvp__field">
+
+        <!-- VAGAS DISPONÍVEIS -->
+        <p class="rsvp__disponibilidade">
+
+          Vagas disponíveis para acompanhantes:
+
+          <strong>
+            {{ limiteAcompanhantes - acompanhantes.length }}
+          </strong>
+
+        </p>
+
+        <!-- =================================================
+             CABEÇALHO DOS ACOMPANHANTES
+             ================================================= -->
+
+        <div class="rsvp__acompanhantes-header">
+
+          <span class="rsvp__acompanhantes-title">
+            Seus acompanhantes
+          </span>
+
+          <!-- BOTÃO ADICIONAR -->
+          @if (
+            !prazoRsvpEncerrado &&
+            limiteAcompanhantes > 0 &&
+            acompanhantes.length < limiteAcompanhantes
+          ) {
+
+            <button
+              type="button"
+              class="rsvp__add-icon"
+              (click)="adicionarAcompanhante()"
+              aria-label="Adicionar acompanhante"
+              title="Adicionar acompanhante"
+            >
+
+              <span aria-hidden="true">+</span>
+
+            </button>
+
+          }
+
+        </div>
+
+        <!-- =================================================
+             CAMPOS DINÂMICOS DOS ACOMPANHANTES
+             ================================================= -->
+
+        <div class="rsvp__acompanhantes">
+
+          @for (
+            acompanhante of acompanhantes;
+            track $index;
+            let i = $index
+          ) {
+
+            <div class="rsvp__acompanhante">
+
+              <!-- IDENTIFICAÇÃO -->
+              <label [for]="'acompanhante-' + i">
+                Acompanhante {{ i + 1 }}
+              </label>
+
+              <!-- INPUT E LIXEIRA -->
+              <div class="rsvp__acompanhante-row">
+
+                <input
+                  type="text"
+                  [id]="'acompanhante-' + i"
+                  [name]="'acompanhante-' + i"
+                  [(ngModel)]="acompanhantes[i]"
+                  [disabled]="prazoRsvpEncerrado"
+                  maxlength="150"
+                  placeholder="Nome completo do acompanhante"
+                />
+
+                <!-- BOTÃO REMOVER -->
+                @if (!prazoRsvpEncerrado) {
+
+                  <button
+                    type="button"
+                    class="rsvp__remove-icon"
+                    (click)="removerAcompanhante(i)"
+                    [attr.aria-label]="'Remover acompanhante ' + (i + 1)"
+                    title="Remover acompanhante"
+                  >
+
+                    <!-- ÍCONE LIXEIRA -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+
+                      <path d="M3 6h18" />
+                      <path d="M8 6V4h8v2" />
+                      <path d="M19 6l-1 14H6L5 6" />
+                      <path d="M10 10v7" />
+                      <path d="M14 10v7" />
+
+                    </svg>
+
+                  </button>
+
+                }
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+        <!-- =================================================
+             LIMITE DE ACOMPANHANTES ATINGIDO
+             ================================================= -->
+
+        @if (
+          !prazoRsvpEncerrado &&
+          limiteAcompanhantes > 0 &&
+          acompanhantes.length >= limiteAcompanhantes
+        ) {
+
+          <p class="rsvp__help">
+            Você atingiu o limite de acompanhantes
+            permitido para este convite.
+          </p>
+
+        }
+
+      </div>
+
+      <!-- =====================================================
+           CONFIRMAÇÃO DE PRESENÇA
+           ===================================================== -->
+
+      @if (
+        !prazoRsvpEncerrado &&
+        (statusConvite === 'PENDENTE' || statusConvite === 'RECUSADO')
+      ) {
+
+        <button
+          type="button"
+          class="rsvp__button rsvp__button--confirm"
+          (click)="confirmarPresenca()"
+        >
+
+          Confirmar presença
+
+        </button>
+
+      }
+
+      <!-- =====================================================
+           CONVITE JÁ CONFIRMADO
+           ===================================================== -->
+
+      @if (statusConvite === 'CONFIRMADO') {
+
+        @if (!prazoRsvpEncerrado) {
+
+          <!-- BOTÃO SALVAR ALTERAÇÕES -->
+          <button
+            type="button"
+            class="rsvp__button rsvp__button--confirm"
+            (click)="confirmarPresenca()"
+          >
+
+            Salvar alterações
+
+          </button>
+
+          <!-- MENSAGEM ABAIXO DO BOTÃO -->
+          <p class="rsvp__help">
+            Sua presença está confirmada.
+            Você pode adicionar, remover ou substituir
+            acompanhantes até o prazo estabelecido.
+          </p>
+
+        } @else {
+
+          <p class="rsvp__help">
+            Sua presença está confirmada.
+            O prazo para alterações foi encerrado.
+          </p>
+
+        }
+
+      }
+
+      <!-- =====================================================
+           AJUDA
+           ===================================================== -->
+
+      <p class="rsvp__help">
+        Precisa de ajuda?
+        Entre em contato com os noivos.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     FIM DO ARQUIVO RSVP.HTML
+     ========================================================= -->

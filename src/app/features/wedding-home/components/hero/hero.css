@@ -1,0 +1,410 @@
+/* ==================================================
+   REIS WEDDING - HERO EDITORIAL
+   50% FOTO | 50% CONTEÚDO
+   ================================================== */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* ==================================================
+   HERO
+   ================================================== */
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background: #f8f3ee;
+
+  overflow: hidden;
+}
+
+/* ==================================================
+   FOTO - LADO ESQUERDO
+   ================================================== */
+
+.hero__visual {
+  position: relative;
+
+  min-width: 0;
+  min-height: 100vh;
+
+  overflow: hidden;
+}
+
+.hero__visual img {
+  width: 100%;
+  height: 100vh;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* ==================================================
+   PAINEL - LADO DIREITO
+   ================================================== */
+
+.hero__panel {
+  position: relative;
+
+  min-width: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #f8f3ee;
+}
+
+/* ==================================================
+   CONTEÚDO PRINCIPAL
+   ================================================== */
+
+.hero__content {
+  width: 100%;
+  max-width: 720px;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+
+  padding:
+    clamp(6rem, 12vh, 9rem)
+    clamp(2rem, 5vw, 6rem)
+    clamp(3rem, 6vh, 5rem);
+
+  text-align: center;
+}
+
+/* ==================================================
+   NOSSO GRANDE DIA
+   ================================================== */
+
+.hero__eyebrow {
+  margin: 0 0 clamp(1.5rem, 3vh, 2.5rem);
+
+  font-family: var(--font-body);
+
+  font-size: clamp(0.68rem, 0.8vw, 0.88rem);
+  font-weight: 500;
+
+  letter-spacing: 0.38em;
+
+  text-transform: uppercase;
+
+  color: #b98772;
+}
+
+/* ==================================================
+   NOMES
+   ================================================== */
+
+.hero__title {
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: var(--font-display);
+
+  font-size: clamp(4rem, 6.5vw, 7.3rem);
+  font-weight: 400;
+
+  line-height: 0.8;
+  letter-spacing: -0.025em;
+
+  text-transform: uppercase;
+
+  color: #2d211e;
+}
+
+.hero__title > span {
+  display: block;
+}
+
+.hero__ampersand {
+  margin:
+    clamp(0.55rem, 1.3vh, 1rem)
+    0
+    clamp(0.5rem, 1.2vh, 0.9rem);
+
+  font-size: 0.58em;
+
+  line-height: 0.75;
+
+  font-style: italic;
+  font-weight: 400;
+
+  color: #bd8e78;
+}
+
+/* ==================================================
+   DATA
+   ================================================== */
+
+.hero__date {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(1rem, 2vw, 2rem);
+
+  margin-top: clamp(2.5rem, 5vh, 4rem);
+
+  font-family: var(--font-body);
+
+  font-size: clamp(0.7rem, 0.85vw, 0.9rem);
+  font-weight: 500;
+
+  letter-spacing: 0.32em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  color: #493d39;
+}
+
+.hero__date-line {
+  width: clamp(35px, 5vw, 70px);
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: #bd8e78;
+}
+
+/* ==================================================
+   MENSAGEM
+   ================================================== */
+
+.hero__message {
+  max-width: 510px;
+
+  margin:
+    clamp(2rem, 4vh, 3rem)
+    auto
+    0;
+
+  font-family: var(--font-display);
+
+  font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+  font-weight: 400;
+
+  line-height: 1.55;
+
+  color: #685650;
+}
+
+/* ==================================================
+   BOTÃO
+   ================================================== */
+
+.hero__button {
+  min-width: 300px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+
+  margin-top: clamp(2rem, 4vh, 3rem);
+
+  padding: 1.05rem 2.2rem;
+
+  border-radius: 999px;
+
+  background: #bd8e78;
+
+  color: #ffffff;
+
+  font-family: var(--font-body);
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+  text-decoration: none;
+
+  box-shadow: 0 8px 24px rgba(82, 56, 48, 0.08);
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero__button:hover {
+  background: #a97864;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 28px rgba(82, 56, 48, 0.14);
+}
+
+/* ==================================================
+   NOTEBOOK / TELAS MENORES
+   ================================================== */
+
+@media (max-width: 1200px) {
+
+  .hero__content {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .hero__title {
+    font-size: clamp(3.8rem, 6.5vw, 5.8rem);
+  }
+
+  .hero__date {
+    letter-spacing: 0.22em;
+  }
+}
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 900px) {
+
+  .hero {
+    grid-template-columns: 48% 52%;
+  }
+
+  .hero__content {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .hero__date-line {
+    display: none;
+  }
+}
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+
+    min-height: auto;
+  }
+
+  .hero__visual {
+    min-height: 55vh;
+    height: 55vh;
+  }
+
+  .hero__visual img {
+    height: 100%;
+
+    object-position: center 35%;
+  }
+
+  .hero__panel {
+    min-height: auto;
+  }
+
+  .hero__content {
+    max-width: none;
+
+    padding:
+      3.5rem
+      1.5rem
+      4rem;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 1.75rem;
+
+    font-size: 0.66rem;
+
+    letter-spacing: 0.3em;
+  }
+
+  .hero__title {
+    font-size: clamp(3.8rem, 17vw, 5.5rem);
+
+    line-height: 0.82;
+  }
+
+  .hero__date {
+    margin-top: 2.5rem;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.18em;
+
+    white-space: normal;
+
+    line-height: 1.7;
+  }
+
+  .hero__message {
+    max-width: 360px;
+
+    margin-top: 2rem;
+
+    font-size: 1.15rem;
+  }
+
+  .hero__button {
+    min-width: 0;
+
+    width: min(100%, 330px);
+
+    margin-top: 2.25rem;
+  }
+}
+
+/* ==================================================
+   CELULARES PEQUENOS
+   ================================================== */
+
+@media (max-width: 380px) {
+
+  .hero__visual {
+    min-height: 50vh;
+    height: 50vh;
+  }
+
+  .hero__content {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .hero__title {
+    font-size: 3.6rem;
+  }
+
+  .hero__button {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    gap: 1rem;
+  }
+}

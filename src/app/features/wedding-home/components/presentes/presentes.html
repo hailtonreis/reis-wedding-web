@@ -1,0 +1,471 @@
+<!-- =========================================================
+     REIS WEDDING
+     COMPONENTE: PRESENTES
+     ========================================================= -->
+
+<section
+  class="presentes"
+  id="presentes"
+  aria-labelledby="presentes-title"
+>
+  <div class="presentes__container">
+
+    <!-- =====================================================
+         CABEÇALHO
+         ===================================================== -->
+
+    <header class="presentes__header">
+
+      <p class="presentes__eyebrow">
+        Lista de Presentes
+      </p>
+
+      <h2
+        id="presentes-title"
+        class="presentes__title"
+      >
+        Celebre esse momento
+        <span>com a gente</span>
+      </h2>
+
+      <p class="presentes__description">
+        Sua presença já torna esse dia especial.
+        Mas, se quiser nos presentear, preparamos algumas
+        ideias para fazer parte dos nossos próximos capítulos.
+      </p>
+
+    </header>
+
+    <!-- =====================================================
+         LISTA DE PRESENTES
+         ===================================================== -->
+
+    <div class="presentes__grid">
+
+      <!-- ===================================================
+           PRESENTE 01 - LUA DE MEL
+           =================================================== -->
+
+      <article class="presente-card">
+
+        <div class="presente-card__image">
+          <img
+            src="/imagens/wedding/lua-de-mel.webp"
+            alt="Viagem romântica de lua de mel em Santorini"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="presente-card__content">
+
+          <p class="presente-card__category">
+            Experiência
+          </p>
+
+          <h3 class="presente-card__title">
+            Jantar especial na lua de mel
+          </h3>
+
+          <p class="presente-card__description">
+            Um jantar inesquecível para celebrarmos
+            o começo dessa nova etapa.
+          </p>
+
+          <div class="presente-card__footer">
+
+            <strong class="presente-card__price">
+              R$ 250
+            </strong>
+
+            <button
+              type="button"
+              class="presente-card__button"
+              (click)="abrirPix('Jantar especial na lua de mel', 250)"
+            >
+              <span>Presentear</span>
+              <span aria-hidden="true">→</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      <!-- ===================================================
+           PRESENTE 02 - NOVO LAR
+           =================================================== -->
+
+      <article class="presente-card">
+
+        <div class="presente-card__image">
+          <img
+            src="/imagens/wedding/novo-lar.webp"
+            alt="Casal começando uma nova vida em seu lar"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="presente-card__content">
+
+          <p class="presente-card__category">
+            Nossa casa
+          </p>
+
+          <h3 class="presente-card__title">
+            Um cantinho para chamar de nosso
+          </h3>
+
+          <p class="presente-card__description">
+            Uma contribuição especial para construirmos
+            juntos os primeiros detalhes do nosso lar.
+          </p>
+
+          <div class="presente-card__footer">
+
+            <strong class="presente-card__price">
+              R$ 350
+            </strong>
+
+            <button
+              type="button"
+              class="presente-card__button"
+              (click)="abrirPix('Um cantinho para chamar de nosso', 350)"
+            >
+              <span>Presentear</span>
+              <span aria-hidden="true">→</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      <!-- ===================================================
+           PRESENTE 03 - AVENTURA
+           =================================================== -->
+
+      <article class="presente-card">
+
+        <div class="presente-card__image">
+          <img
+            src="/imagens/wedding/aventura.webp"
+            alt="Casal vivendo uma aventura durante uma viagem"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="presente-card__content">
+
+          <p class="presente-card__category">
+            Lua de mel
+          </p>
+
+          <h3 class="presente-card__title">
+            Um passeio para guardar na memória
+          </h3>
+
+          <p class="presente-card__description">
+            Uma experiência para colecionarmos
+            boas histórias durante nossa viagem.
+          </p>
+
+          <div class="presente-card__footer">
+
+            <strong class="presente-card__price">
+              R$ 500
+            </strong>
+
+            <button
+              type="button"
+              class="presente-card__button"
+              (click)="abrirPix('Um passeio para guardar na memória', 500)"
+            >
+              <span>Presentear</span>
+              <span aria-hidden="true">→</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      <!-- ===================================================
+           PRESENTE 04 - VALOR LIVRE
+           =================================================== -->
+
+      <article class="presente-card presente-card--livre">
+
+        <div class="presente-card__image">
+
+          <img
+            src="/imagens/wedding/presente-carinho.webp"
+            alt="Presente especial oferecido com carinho aos noivos"
+            loading="lazy"
+          />
+
+        </div>
+
+        <div class="presente-card__content">
+
+          <p class="presente-card__category">
+            Contribuição especial
+          </p>
+
+          <h3 class="presente-card__title">
+            Presenteie com carinho
+          </h3>
+
+          <p class="presente-card__description">
+            Escolha um valor especial e faça parte
+            da realização dos nossos sonhos.
+          </p>
+
+          <div class="presente-card__footer presente-card__footer--livre">
+
+            <div class="presente-card__valor-livre">
+
+              <label for="valor-presente">
+                Escolha o valor
+              </label>
+
+              <div class="presente-card__input-wrapper">
+
+                <span aria-hidden="true">R$</span>
+
+                <input
+                  id="valor-presente"
+                  type="number"
+                  name="valorPresente"
+                  min="1"
+                  step="0.01"
+                  inputmode="decimal"
+                  placeholder="0,00"
+                  [(ngModel)]="valorLivre"
+                />
+
+              </div>
+
+            </div>
+
+            <button
+              type="button"
+              class="presente-card__button"
+              [disabled]="!valorLivre || valorLivre <= 0"
+              (click)="abrirPixValorLivre()"
+            >
+              <span>Presentear</span>
+              <span aria-hidden="true">→</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+    <!-- =====================================================
+         RODAPÉ DA SEÇÃO
+         ===================================================== -->
+
+    <div class="presentes__closing">
+
+      <p>
+        Mais importante que qualquer presente
+        é poder celebrar esse momento ao seu lado.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     MODAL PIX
+     ========================================================= -->
+
+@if (modalPixAberto) {
+
+  <div
+    class="pix-modal__overlay"
+    (click)="fecharPix()"
+  >
+
+    <section
+      class="pix-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pix-modal-title"
+      (click)="$event.stopPropagation()"
+    >
+
+      <!-- CABEÇALHO -->
+
+      <header class="pix-modal__header">
+
+        <p class="pix-modal__eyebrow">
+          Um presente especial
+        </p>
+
+        <button
+          type="button"
+          class="pix-modal__close"
+          aria-label="Fechar janela Pix"
+          (click)="fecharPix()"
+        >
+          ×
+        </button>
+
+      </header>
+
+      <!-- CONTEÚDO -->
+
+      <div class="pix-modal__content">
+
+        <h2
+          id="pix-modal-title"
+          class="pix-modal__title"
+        >
+          Presentear com Pix
+        </h2>
+
+        <p class="pix-modal__description">
+          Obrigado por fazer parte da nossa história!
+          Seu carinho torna esse momento ainda mais especial.
+        </p>
+
+        <!-- PRESENTE SELECIONADO -->
+
+        <div class="pix-modal__presente">
+
+          <span>Presente escolhido</span>
+
+          <strong>
+            {{ presenteSelecionado?.titulo }}
+          </strong>
+
+        </div>
+
+        <!-- VALOR -->
+
+        <div class="pix-modal__valor">
+
+          <span>Valor do presente</span>
+
+          <strong>
+            {{ valorSelecionado | currency:'BRL':'symbol':'1.2-2' }}
+          </strong>
+
+        </div>
+
+        <!-- QR CODE DEMONSTRATIVO -->
+
+        <div class="pix-modal__qrcode">
+
+          @if (qrCodePix) {
+
+            <img
+              [src]="qrCodePix"
+              alt="QR Code demonstrativo do presente, sem possibilidade de pagamento"
+            />
+
+          } @else if (gerandoQrCode) {
+
+            <p role="status" aria-live="polite">
+              Preparando QR Code demonstrativo...
+            </p>
+
+          } @else {
+
+            <p role="status" aria-live="polite">
+              {{ mensagemPix || 'QR Code demonstrativo indisponível.' }}
+            </p>
+
+          }
+
+        </div>
+
+        <!-- RECEBEDOR -->
+
+        <div class="pix-modal__recebedor">
+
+          <span>Dados ilustrativos do recebedor</span>
+
+          <strong>
+            {{ nomeRecebedorPix }}
+          </strong>
+
+          <small>
+            {{ cidadeRecebedorPix }}
+          </small>
+
+        </div>
+
+        <!-- CÓDIGO DEMONSTRATIVO -->
+
+        <div class="pix-modal__copia-cola">
+
+          <label for="pix-codigo">
+            Código demonstrativo (não é Pix Copia e Cola)
+          </label>
+
+          <textarea
+            id="pix-codigo"
+            readonly
+            rows="3"
+            [value]="codigoPix"
+          ></textarea>
+
+          <button
+            type="button"
+            class="pix-modal__copy-button"
+            [disabled]="!codigoPix"
+            (click)="copiarCodigoPix()"
+          >
+            {{ pixCopiado ? 'Código copiado!' : 'Copiar código demonstrativo' }}
+          </button>
+
+        </div>
+
+        <!-- MENSAGEM DE CÓPIA OU ERRO -->
+
+        @if (mensagemPix && qrCodePix) {
+
+          <p class="pix-modal__instructions" role="status" aria-live="polite">
+            {{ mensagemPix }}
+          </p>
+
+        }
+
+        <!-- INSTRUÇÕES -->
+
+        <p class="pix-modal__instructions">
+          Este QR Code é apenas uma demonstração da funcionalidade
+          de presentes do Reis Wedding. Não é um Pix válido e não
+          permite realizar pagamentos reais.
+        </p>
+
+        <!-- OBSERVAÇÃO -->
+
+        <p class="pix-modal__notice">
+          Ambiente de demonstração — nenhum valor será transferido.
+          Não tente pagar este código pelo aplicativo do banco.
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
+
+}
+
+<!-- =========================================================
+     FIM DO ARQUIVO PRESENTES.HTML
+     REIS WEDDING
+     ========================================================= -->

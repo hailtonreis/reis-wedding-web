@@ -1,0 +1,688 @@
+/* =========================================================
+   NOSSA HISTÓRIA
+   Reis Wedding
+   ========================================================= */
+
+:host {
+  display: block;
+}
+
+.nossa-historia {
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 2rem;
+  background: #f8f4f0;
+  color: #3f3833;
+}
+
+.nossa-historia__container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.nossa-historia__header {
+  max-width: 760px;
+  margin: 0 auto 8rem;
+  text-align: center;
+}
+
+.nossa-historia__eyebrow {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+
+  color: #a67c68;
+}
+
+.nossa-historia__title {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.8rem, 6vw, 5.4rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+
+  color: #3f3833;
+}
+
+.nossa-historia__title span {
+  display: block;
+  margin-top: 0.25rem;
+
+  font-style: italic;
+  font-weight: 400;
+
+  color: #a67c68;
+}
+
+.nossa-historia__intro {
+  max-width: 520px;
+  margin: 2rem auto 0;
+
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  color: #766c65;
+}
+
+
+/* =========================================================
+   BLOCOS DA HISTÓRIA
+   ========================================================= */
+
+.historia {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7rem);
+
+  margin-bottom: 10rem;
+}
+
+.historia__content {
+  position: relative;
+  max-width: 500px;
+}
+
+.historia__number {
+  display: block;
+  margin-bottom: 2rem;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+
+  color: #b9a99f;
+}
+
+.historia__eyebrow {
+  margin: 0 0 0.8rem;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: #a67c68;
+}
+
+.historia__title {
+  margin: 0 0 2rem;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+
+  color: #403832;
+}
+
+.historia__title span {
+  display: block;
+  font-style: italic;
+  color: #a67c68;
+}
+
+.historia__text {
+  margin: 0 0 1.15rem;
+
+  font-size: 1rem;
+  line-height: 1.9;
+
+  color: #746a63;
+}
+
+.historia__closing {
+  position: relative;
+
+  margin: 2rem 0 0;
+  padding-left: 1.5rem;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.7;
+
+  color: #554943;
+}
+
+.historia__closing::before {
+  content: "";
+  position: absolute;
+
+  top: 0.2rem;
+  bottom: 0.2rem;
+  left: 0;
+
+  width: 1px;
+
+  background: #c8a894;
+}
+
+
+/* =========================================================
+   IMAGENS / PLACEHOLDERS
+   ========================================================= */
+
+.historia__image {
+  position: relative;
+  overflow: hidden;
+
+  background: #e9dfd8;
+}
+
+.historia__image--principal {
+  height: 650px;
+  border-radius: 18rem 18rem 0.4rem 0.4rem;
+}
+
+.historia__image--principal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.historia__placeholder {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e9ddd4 0%,
+      #d8c5b8 100%
+    );
+
+  text-align: center;
+}
+
+.historia__placeholder span {
+  max-width: 190px;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: rgba(78, 61, 52, 0.55);
+}
+
+
+/* Quando colocarmos as fotos reais */
+
+.historia__image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.8s ease;
+}
+
+.historia__image:hover img {
+  transform: scale(1.025);
+}
+
+
+/* =========================================================
+   FRASE / RESPIRO EDITORIAL
+   ========================================================= */
+
+.nossa-historia__quote {
+  position: relative;
+
+  max-width: 900px;
+  margin: 1rem auto 10rem;
+  padding: 5rem 2rem;
+
+  text-align: center;
+}
+
+.nossa-historia__quote::before,
+.nossa-historia__quote::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+
+  width: 70px;
+  height: 1px;
+
+  background: #cbb2a3;
+
+  transform: translateX(-50%);
+}
+
+.nossa-historia__quote::before {
+  top: 0;
+}
+
+.nossa-historia__quote::after {
+  bottom: 0;
+}
+
+.nossa-historia__quote-mark {
+  display: block;
+
+  height: 3rem;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 5rem;
+  line-height: 1;
+
+  color: #d7bbae;
+}
+
+.nossa-historia__quote blockquote {
+  max-width: 760px;
+  margin: 0 auto;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.3;
+
+  color: #4a403a;
+}
+
+.nossa-historia__quote-signature {
+  display: block;
+  margin-top: 2rem;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: #a67c68;
+}
+
+
+/* =========================================================
+   CASAMENTO / MINI GALERIA
+   ========================================================= */
+
+.historia--casamento {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+}
+
+.historia__gallery {
+  position: relative;
+
+  min-height: 650px;
+}
+
+.historia__image--vertical {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 72%;
+  height: 570px;
+
+  border-radius: 0.35rem;
+}
+
+.historia__image--detail {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 48%;
+  height: 320px;
+
+  border: 10px solid #f8f4f0;
+  border-radius: 0.25rem;
+
+  box-shadow: 0 20px 50px rgba(76, 57, 47, 0.12);
+}
+
+
+/* =========================================================
+   27 ANOS
+   ========================================================= */
+
+.nossa-historia__years {
+  position: relative;
+
+  margin: 0 0 10rem;
+  padding: 5rem 0;
+}
+
+.nossa-historia__years-line {
+  position: absolute;
+
+  top: 50%;
+  right: 0;
+  left: 0;
+
+  height: 1px;
+
+  background: #d9cbc2;
+}
+
+.nossa-historia__years-content {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+
+  background: #f8f4f0;
+}
+
+.nossa-historia__years-number {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(6rem, 14vw, 11rem);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+
+  color: #a67c68;
+}
+
+.nossa-historia__years-label {
+  display: block;
+
+  margin-bottom: 0.5rem;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-style: italic;
+
+  color: #4d423c;
+}
+
+.nossa-historia__years-content p {
+  max-width: 300px;
+  margin: 0;
+
+  font-size: 0.95rem;
+  line-height: 1.7;
+
+  color: #766c65;
+}
+
+
+/* =========================================================
+   RENOVAÇÃO
+   ========================================================= */
+
+.historia--renovacao {
+  margin-bottom: 2rem;
+}
+
+.historia__image--renovacao {
+  height: 620px;
+
+  border-radius: 0.4rem 0.4rem 14rem 14rem;
+}
+
+.historia__image--renovacao img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .nossa-historia {
+    padding: 6rem 1.5rem;
+  }
+
+  .nossa-historia__header {
+    margin-bottom: 5rem;
+  }
+
+  .historia,
+  .historia--casamento {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+
+    margin-bottom: 7rem;
+  }
+
+  .historia__content {
+    max-width: 650px;
+  }
+
+  .historia--casamento .historia__content {
+    order: 2;
+  }
+
+  .historia--casamento .historia__gallery {
+    order: 1;
+  }
+
+  .historia__image--principal,
+  .historia__image--renovacao {
+    min-height: 580px;
+  }
+
+  .historia__gallery {
+    min-height: 600px;
+  }
+
+  .nossa-historia__quote {
+    margin-bottom: 7rem;
+  }
+
+  .nossa-historia__years {
+    margin-bottom: 7rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .nossa-historia {
+    padding: 5rem 1.25rem;
+  }
+
+  .nossa-historia__header {
+    margin-bottom: 4.5rem;
+  }
+
+  .nossa-historia__eyebrow {
+    font-size: 0.65rem;
+  }
+
+  .nossa-historia__title {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+
+  .nossa-historia__intro {
+    font-size: 0.95rem;
+  }
+
+
+  /* HISTÓRIA */
+
+  .historia {
+    gap: 2.75rem;
+    margin-bottom: 6rem;
+  }
+
+  .historia__number {
+    margin-bottom: 1.5rem;
+  }
+
+  .historia__title {
+    font-size: clamp(2.2rem, 11vw, 3.2rem);
+  }
+
+  .historia__text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+
+  /* FOTOS */
+
+  .historia__image--principal {
+    min-height: 470px;
+
+    border-radius: 10rem 10rem 0.3rem 0.3rem;
+  }
+
+  .historia__image--renovacao {
+    min-height: 470px;
+
+    border-radius: 0.3rem 0.3rem 9rem 9rem;
+  }
+
+
+  /* FRASE */
+
+  .nossa-historia__quote {
+    margin-bottom: 6rem;
+    padding: 4rem 0.5rem;
+  }
+
+  .nossa-historia__quote-mark {
+    font-size: 4rem;
+  }
+
+  .nossa-historia__quote blockquote {
+    font-size: clamp(1.7rem, 8vw, 2.4rem);
+  }
+
+
+  /* GALERIA */
+
+  .historia__gallery {
+    min-height: 510px;
+  }
+
+  .historia__image--vertical {
+    width: 82%;
+    height: 440px;
+  }
+
+  .historia__image--detail {
+    width: 54%;
+    height: 240px;
+
+    border-width: 7px;
+  }
+
+
+  /* 27 ANOS */
+
+  .nossa-historia__years {
+    margin-bottom: 6rem;
+    padding: 3rem 0;
+  }
+
+  .nossa-historia__years-content {
+    gap: 1.25rem;
+
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .nossa-historia__years-number {
+    font-size: clamp(5rem, 26vw, 7rem);
+  }
+
+  .nossa-historia__years-label {
+    font-size: 1.6rem;
+  }
+
+  .nossa-historia__years-content p {
+    font-size: 0.82rem;
+  }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .historia__image img {
+    transition: none;
+  }
+
+  .historia__image:hover img {
+    transform: none;
+  }
+}
+
+/* TESTE TEMPORÁRIO - MINI GALERIA */
+
+.historia__gallery {
+  position: relative;
+  min-height: 650px;
+}
+
+.historia__image--vertical {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72%;
+  height: 570px;
+  display: block;
+}
+
+.historia__image--detail {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48%;
+  height: 320px;
+  display: block;
+  z-index: 2;
+}
+
+.historia__image--vertical img,
+.historia__image--detail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
