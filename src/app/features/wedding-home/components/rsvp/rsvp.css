@@ -790,9 +790,64 @@
 }
 
 /* =========================================================
-   FIM DO ARQUIVO RSVP.CSS
+   RSVP - MENSAGENS E ESTADOS DE SALVAMENTO
    ========================================================= */
 
+.rsvp__mensagem {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.rsvp__mensagem-texto {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.rsvp__mensagem--sucesso {
+  background: #edf7f0;
+  color: #285b40;
+  border-color: #b8dcc5;
+}
+
+.rsvp__mensagem--erro {
+  background: #fff1f1;
+  color: #9b3030;
+  border-color: #efc2c2;
+}
+
+.rsvp__add-icon:disabled,
+.rsvp__remove-icon:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.rsvp__add-icon:disabled:hover {
+  background: #fffaf6;
+  color: #8e626d;
+  border-color: #c9aa98;
+  transform: none;
+}
+
+.rsvp__remove-icon:disabled:hover {
+  background: transparent;
+  color: #9b7777;
+  border-color: transparent;
+}
+
+.rsvp__acompanhante-row input:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
 
 /* =========================================================
    FIM DO ARQUIVO RSVP.CSS
