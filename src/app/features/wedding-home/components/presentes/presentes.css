@@ -1,3 +1,16 @@
+/* =========================================================
+   REIS WEDDING
+   COMPONENTE: PRESENTES
+   ========================================================= */
+
+:host {
+  display: block;
+}
+
+/* =========================================================
+   SEÇÃO PRINCIPAL
+   ========================================================= */
+
 .presentes {
   position: relative;
   padding: 8rem 2rem;
@@ -54,17 +67,19 @@
 }
 
 /* =========================================================
-   GRID
+   GRID DE PRESENTES
+   DESKTOP: 2 COLUNAS / 2 LINHAS
    ========================================================= */
 
 .presentes__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: stretch;
 }
 
 /* =========================================================
-   CARD
+   CARTÃO DE PRESENTE
    ========================================================= */
 
 .presente-card {
@@ -74,6 +89,7 @@
   background: #fffaf6;
   border: 1px solid rgba(166, 124, 104, 0.16);
   overflow: hidden;
+
   transition:
     transform 300ms ease,
     box-shadow 300ms ease;
@@ -85,11 +101,12 @@
 }
 
 /* =========================================================
-   IMAGEM
+   IMAGEM DO PRESENTE
    ========================================================= */
 
 .presente-card__image {
   position: relative;
+  width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #e9ddd5;
@@ -101,6 +118,7 @@
   display: grid;
   place-items: center;
   padding: 2rem;
+
   background:
     linear-gradient(
       135deg,
@@ -117,13 +135,12 @@
   color: #8b7063;
 }
 
-/* Quando colocarmos fotos reais nos presentes */
-
 .presente-card__image img {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
+
   transition: transform 600ms ease;
 }
 
@@ -132,7 +149,7 @@
 }
 
 /* =========================================================
-   CONTEÚDO
+   CONTEÚDO DO CARTÃO
    ========================================================= */
 
 .presente-card__content {
@@ -168,6 +185,7 @@
 }
 
 /* =========================================================
+   RODAPÉ DO CARTÃO
    PREÇO + BOTÃO
    ========================================================= */
 
@@ -187,6 +205,10 @@
   white-space: nowrap;
   color: #332c28;
 }
+
+/* =========================================================
+   BOTÃO PRESENTEAR
+   ========================================================= */
 
 .presente-card__button {
   display: inline-flex;
@@ -216,9 +238,9 @@
     transform 220ms ease;
 }
 
-.presente-card__button:hover {
+.presente-card__button:hover:not(:disabled) {
   background: #a67c68;
-  color: #fff;
+  color: #ffffff;
   transform: translateY(-1px);
 }
 
@@ -226,12 +248,107 @@
   transition: transform 220ms ease;
 }
 
-.presente-card__button:hover span:last-child {
+.presente-card__button:hover:not(:disabled) span:last-child {
   transform: translateX(3px);
 }
 
+.presente-card__button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* =========================================================
-   FECHAMENTO
+   QUARTO PRESENTE
+   VALOR LIVRE
+   ========================================================= */
+
+.presente-card--livre {
+  background: #fffaf6;
+}
+
+.presente-card__footer--livre {
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.presente-card__valor-livre {
+  display: flex;
+  flex: 1 1 180px;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.presente-card__valor-livre label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #665952;
+}
+
+.presente-card__input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  min-height: 46px;
+  padding: 0.65rem 1rem;
+
+  background: #ffffff;
+  border: 1px solid #d9c5bd;
+  border-radius: 8px;
+
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.presente-card__input-wrapper:focus-within {
+  border-color: #a67c68;
+  box-shadow: 0 0 0 3px rgba(166, 124, 104, 0.12);
+}
+
+.presente-card__input-wrapper span {
+  flex-shrink: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  color: #8f6958;
+}
+
+.presente-card__input-wrapper input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 0;
+  background: transparent;
+
+  border: 0;
+  outline: none;
+
+  font-family: inherit;
+  font-size: 1rem;
+  color: #332c28;
+}
+
+.presente-card__input-wrapper input::placeholder {
+  color: #a99a91;
+}
+
+.presente-card__input-wrapper input::-webkit-inner-spin-button,
+.presente-card__input-wrapper input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.presente-card__input-wrapper input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* =========================================================
+   FECHAMENTO DA SEÇÃO
    ========================================================= */
 
 .presentes__closing {
@@ -263,6 +380,404 @@
 }
 
 /* =========================================================
+   MODAL PIX
+   FUNDO ESCURECIDO
+   ========================================================= */
+
+.pix-modal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  background: rgba(35, 27, 24, 0.68);
+  backdrop-filter: blur(5px);
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* =========================================================
+   JANELA DO MODAL
+   ========================================================= */
+
+.pix-modal {
+  box-sizing: border-box;
+  position: relative;
+
+  width: min(520px, 100%);
+  max-height: calc(100dvh - 3rem);
+
+  margin: auto;
+
+  background: #fffaf6;
+  border: 1px solid rgba(166, 124, 104, 0.2);
+  border-radius: 16px;
+
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* =========================================================
+   CABEÇALHO DO MODAL
+   ========================================================= */
+
+.pix-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding: 1.5rem 2rem 0;
+}
+
+.pix-modal__eyebrow {
+  margin: 0;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  color: #a67c68;
+}
+
+/* =========================================================
+   BOTÃO FECHAR
+   ========================================================= */
+
+.pix-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 38px;
+  height: 38px;
+
+  padding: 0;
+
+  background: transparent;
+  color: #8f6958;
+
+  border: 1px solid #e3d5cb;
+  border-radius: 50%;
+
+  font-family: Arial, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
+}
+
+.pix-modal__close:hover {
+  background: #a67c68;
+  color: #ffffff;
+  border-color: #a67c68;
+}
+
+/* =========================================================
+   CONTEÚDO DO MODAL
+   ========================================================= */
+
+.pix-modal__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  padding: 1.5rem 2rem 2rem;
+}
+
+.pix-modal__title {
+  margin: 0;
+
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  font-weight: 400;
+  line-height: 1.15;
+
+  color: #332c28;
+}
+
+.pix-modal__description {
+  margin: 0;
+
+  font-size: 0.9rem;
+  line-height: 1.75;
+
+  color: #756a64;
+}
+
+/* =========================================================
+   PRESENTE ESCOLHIDO
+   ========================================================= */
+
+.pix-modal__presente {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  padding: 1rem 1.25rem;
+
+  background: #f8f4f0;
+  border: 1px solid #eaded6;
+  border-radius: 10px;
+}
+
+.pix-modal__presente span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #8f6958;
+}
+
+.pix-modal__presente strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.4;
+
+  color: #332c28;
+}
+
+/* =========================================================
+   VALOR DO PRESENTE
+   ========================================================= */
+
+.pix-modal__valor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+.pix-modal__valor span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #756a64;
+}
+
+.pix-modal__valor strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+
+  color: #8f6958;
+}
+
+/* =========================================================
+   QR CODE PIX
+   ========================================================= */
+
+.pix-modal__qrcode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 230px;
+  padding: 1.25rem;
+
+  background: #ffffff;
+  border: 1px solid #eaded6;
+  border-radius: 12px;
+}
+
+.pix-modal__qrcode img {
+  display: block;
+
+  width: min(220px, 100%);
+  height: auto;
+  aspect-ratio: 1 / 1;
+
+  object-fit: contain;
+}
+
+.pix-modal__qrcode p {
+  margin: 0;
+
+  font-size: 0.85rem;
+  line-height: 1.6;
+  text-align: center;
+
+  color: #756a64;
+}
+
+/* =========================================================
+   DADOS DO RECEBEDOR
+   ========================================================= */
+
+.pix-modal__recebedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+.pix-modal__recebedor span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #756a64;
+}
+
+.pix-modal__recebedor strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: #332c28;
+}
+
+.pix-modal__recebedor small {
+  font-size: 0.78rem;
+  color: #8f6958;
+}
+
+/* =========================================================
+   PIX COPIA E COLA
+   ========================================================= */
+
+.pix-modal__copia-cola {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pix-modal__copia-cola label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #665952;
+}
+
+.pix-modal__copia-cola textarea {
+  box-sizing: border-box;
+
+  display: block;
+  width: 100%;
+  min-height: 90px;
+
+  padding: 0.85rem 1rem;
+
+  background: #ffffff;
+  color: #665952;
+
+  border: 1px solid #d9c5bd;
+  border-radius: 8px;
+
+  font-family: monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+
+  resize: none;
+  overflow-wrap: anywhere;
+}
+
+.pix-modal__copia-cola textarea:focus {
+  outline: none;
+  border-color: #a67c68;
+}
+
+/* =========================================================
+   BOTÃO COPIAR PIX
+   ========================================================= */
+
+.pix-modal__copy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 48px;
+
+  padding: 0.85rem 1.25rem;
+
+  background: #a67c68;
+  color: #ffffff;
+
+  border: 1px solid #a67c68;
+  border-radius: 999px;
+
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+.pix-modal__copy-button:hover:not(:disabled) {
+  background: #8f6958;
+  border-color: #8f6958;
+  transform: translateY(-1px);
+}
+
+.pix-modal__copy-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   INSTRUÇÕES DE PAGAMENTO
+   ========================================================= */
+
+.pix-modal__instructions {
+  margin: 0;
+
+  font-size: 0.82rem;
+  line-height: 1.75;
+  text-align: center;
+
+  color: #756a64;
+}
+
+/* =========================================================
+   OBSERVAÇÃO FINAL
+   ========================================================= */
+
+.pix-modal__notice {
+  margin: 0;
+  padding-top: 1rem;
+
+  border-top: 1px solid #eaded6;
+
+  font-size: 0.75rem;
+  line-height: 1.65;
+  text-align: center;
+
+  color: #8f6958;
+}
+
+/* =========================================================
    TABLET
    ========================================================= */
 
@@ -278,6 +793,15 @@
 
   .presentes__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .presente-card__content {
+    padding: 1.75rem;
+  }
+
+  .presente-card__footer {
+    flex-wrap: wrap;
   }
 
 }
@@ -318,8 +842,101 @@
     font-size: 1.5rem;
   }
 
+  .presente-card__footer {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .presente-card__footer--livre {
+    align-items: stretch;
+  }
+
+  .presente-card__valor-livre {
+    flex-basis: 100%;
+  }
+
+  .presente-card__footer--livre .presente-card__button {
+    width: 100%;
+  }
+
   .presentes__closing {
     margin-top: 3.5rem;
+  }
+
+  /* MODAL PIX - MOBILE */
+
+  .pix-modal__overlay {
+    padding: 0.75rem;
+  }
+
+  .pix-modal {
+    width: 100%;
+    max-height: calc(100dvh - 1.5rem);
+    border-radius: 12px;
+  }
+
+  .pix-modal__header {
+    padding: 1.25rem 1.25rem 0;
+  }
+
+  .pix-modal__content {
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .pix-modal__title {
+    font-size: 1.85rem;
+  }
+
+  .pix-modal__valor strong {
+    font-size: 2rem;
+  }
+
+  .pix-modal__qrcode {
+    min-height: 200px;
+    padding: 1rem;
+  }
+
+  .pix-modal__qrcode img {
+    width: min(190px, 100%);
+  }
+
+  .pix-modal__copia-cola textarea {
+    font-size: 0.7rem;
+  }
+
+}
+
+/* =========================================================
+   TELAS MUITO PEQUENAS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .presente-card__footer:not(.presente-card__footer--livre) {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .presente-card__footer:not(.presente-card__footer--livre)
+  .presente-card__button {
+    width: 100%;
+  }
+
+  .pix-modal__overlay {
+    padding: 0.5rem;
+  }
+
+  .pix-modal {
+    max-height: calc(100dvh - 1rem);
+  }
+
+  .pix-modal__content {
+    padding: 1rem;
+  }
+
+  .pix-modal__header {
+    padding: 1rem 1rem 0;
   }
 
 }
@@ -328,13 +945,35 @@
    ACESSIBILIDADE
    ========================================================= */
 
+.presente-card__button:focus-visible,
+.presente-card__input-wrapper:focus-within,
+.pix-modal__close:focus-visible,
+.pix-modal__copy-button:focus-visible {
+  outline: 2px solid #a67c68;
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   .presente-card,
   .presente-card__image img,
   .presente-card__button,
-  .presente-card__button span {
+  .presente-card__button span,
+  .pix-modal__close,
+  .pix-modal__copy-button {
     transition: none;
   }
 
+  .presente-card:hover,
+  .presente-card:hover .presente-card__image img,
+  .presente-card__button:hover,
+  .pix-modal__copy-button:hover {
+    transform: none;
+  }
+
 }
+
+/* =========================================================
+   FIM DO ARQUIVO PRESENTES.CSS
+   REIS WEDDING
+   ========================================================= */
